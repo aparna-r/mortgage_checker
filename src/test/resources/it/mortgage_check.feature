@@ -11,8 +11,13 @@ Feature: mortgage check
       | 100000 |                    10 |    500000 |    500000 |            false |           0 |
       | 100000 |                    20 |    500000 |    400000 |            false |           0 |
 
-  Scenario: client makes calls to check mortgage feasibility but fails
+  Scenario: client makes calls with non existing maturity to check mortgage feasibility
     When client makes check mortgage request with non existing maturity period 29
     Then client receives http status code 400
     And client receives error response with 102, 'maturity period not found'
+
+  Scenario: client makes calls with invalid input to check mortgage feasibility
+    When client makes check mortgage request with negative income
+    Then client receives http status code 400
+    And client receives error response with 101, 'invalid request: {income=must be greater than 0}'
 

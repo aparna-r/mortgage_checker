@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.within;
 
 @Slf4j
-public class StepDefsIntegrationTest extends SpringIntegrationTest {
+public class StepDefs extends RestCallHandler {
 
     @When("client makes get interest rate request")
     public void clientMakesGetInterestCall() {
@@ -35,6 +35,12 @@ public class StepDefsIntegrationTest extends SpringIntegrationTest {
     public void clientMakesPostMortgageCheck(int nonExistingMaturityPeriod) {
         executePostEntity("http://localhost:8080/api/mortgage-check",
                 new MortgageCheckRequest(100, nonExistingMaturityPeriod, 200, 200));
+    }
+
+    @When("client makes check mortgage request with negative income")
+    public void clientMakesPostMortgageCheck() {
+        executePostEntity("http://localhost:8080/api/mortgage-check",
+                new MortgageCheckRequest(-100, 5, 200, 200));
     }
 
     @Then("client receives http status code {int}")

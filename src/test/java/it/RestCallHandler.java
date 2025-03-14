@@ -2,10 +2,7 @@ package it;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.mortgages.testassignment.Application;
-import io.cucumber.spring.CucumberContextConfiguration;
 import lombok.SneakyThrows;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.client.DefaultResponseErrorHandler;
@@ -13,16 +10,12 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.DEFINED_PORT;
-
-@CucumberContextConfiguration
-@SpringBootTest(classes = Application.class, webEnvironment = DEFINED_PORT)
-public class SpringIntegrationTest {
+public class RestCallHandler {
     private final static ThreadLocal<ResponseEntity<String>> lastResponse = new ThreadLocal<>();
-    private RestTemplate restTemplate;
-    private ObjectMapper objectMapper;
+    private final RestTemplate restTemplate;
+    private final ObjectMapper objectMapper;
 
-    public SpringIntegrationTest() {
+    public RestCallHandler() {
         this.restTemplate = new RestTemplate();
         restTemplate.setErrorHandler(new NoOpResponseErrorHandler());
         this.objectMapper = new ObjectMapper();
