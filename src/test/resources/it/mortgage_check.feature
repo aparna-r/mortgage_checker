@@ -1,18 +1,18 @@
 Feature: mortgage check
 
   Scenario Outline: client makes successful calls to check mortgage feasibility
-    When client makes check mortgage request with <income>, <maturityPeriod>, <loanValue>, <homeValue>
+    When client makes check mortgage request with <income>, <maturityPeriodInYears>, <loanValue>, <homeValue>
     Then client receives http status code 200
-    And client receives check mortgage response with <mortgagePossible>, <mortgageMonthlyAmount>
+    And client receives check mortgage response with <mortgagePossible>, <monthlyCost>
     Examples:
-      | income | maturityPeriod | loanValue | homeValue | mortgagePossible | mortgageMonthlyAmount |
-      | 100000 |             30 |     85000 |     90000 |             true |                405.80 |
+      | income | maturityPeriodInYears | loanValue | homeValue | mortgagePossible | monthlyCost |
+      | 100000 |                    30 |     85000 |     90000 |             true |      441.35 |
+      | 100000 |                     5 |    300000 |    300000 |             true |     5495.22 |
+      | 100000 |                    10 |    500000 |    500000 |            false |           0 |
+      | 100000 |                    20 |    500000 |    400000 |            false |           0 |
 
-  Scenario Outline: client makes calls to check mortgage feasibility but fails
-    When client makes check mortgage request with <income>, <maturityPeriod>, <loanValue>, <homeValue>
-    Then client receives http status code <httpStatus>
-    And client receives error response with <errorCode>, <message>
-    Examples:
-      | income | maturityPeriod | loanValue | homeValue | httpStatus | errorCode |             message  |
-      |    100 |             10 |       150 |       150 |        500 |       100 |       'unknown error'|
+  Scenario: client makes calls to check mortgage feasibility but fails
+    When client makes check mortgage request with non existing maturity period 29
+    Then client receives http status code 400
+    And client receives error response with 102, 'maturity period not found'
 

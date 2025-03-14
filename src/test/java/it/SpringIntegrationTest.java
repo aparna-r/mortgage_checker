@@ -1,6 +1,7 @@
 package it;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.mortgages.testassignment.Application;
 import io.cucumber.spring.CucumberContextConfiguration;
 import lombok.SneakyThrows;
@@ -25,6 +26,7 @@ public class SpringIntegrationTest {
         this.restTemplate = new RestTemplate();
         restTemplate.setErrorHandler(new NoOpResponseErrorHandler());
         this.objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
     }
 
     protected void executeGetEntity(String url) {

@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 
 public interface MortgageInterestRateRepository extends CrudRepository<MortgageInterestRate, Long> {
-    Optional<MortgageInterestRate> findByMaturityPeriod(Integer maturityPeriod);
+    Optional<MortgageInterestRate> findByMaturityPeriodInYears(Integer maturityPeriodInYears);
 }

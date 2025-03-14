@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.stream.Collectors;
 
 import static com.mortgages.testassignment.model.RequestResponseModel.MORTGAGE_NOT_FEASIBLE;
@@ -28,16 +30,18 @@ public class MortgageController {
     public MortgageInterestRateListResponse getMortgageInterestRates() {
         return new MortgageInterestRateListResponse(mortgageInterestRateService.getInterestRates().stream()
                 .map(mortgageInterestRate -> new MortgageInterestRateResponse(
-                        mortgageInterestRate.getMaturityPeriod(),
-                        mortgageInterestRate.getInterestRate()))
+                        mortgageInterestRate.getMaturityPeriodInYears(),
+                        mortgageInterestRate.getAnnualInterestRatePercentage(),
+                        mortgageInterestRate.getLastUpdate().withZoneSameInstant(ZoneOffset.UTC)
+                                .format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)))
                 .collect(Collectors.toList()));
     }
 
     @PostMapping("/api/mortgage-check")
     public MortgageCheckResponse mortgageCheck(@RequestBody @Valid final MortgageCheckRequest checkRequest) {
-        return mortgageCheckService.getMonthlyMortgageAmount(checkRequest.income(), checkRequest.maturityPeriod(),
-                        checkRequest.loanValue(), checkRequest.homeValue())
-                .map(v -> new MortgageCheckResponse(true, v))
+        return mortgageCheckService.getMonthlyCost(checkRequest.income(),
+                        checkRequest.maturityPeriodInYears(), checkRequest.loanValue(), checkRequest.homeValue())
+                .map(m -> new MortgageCheckResponse(true, m))
                 .orElse(MORTGAGE_NOT_FEASIBLE);
     }
 }

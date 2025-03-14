@@ -14,4 +14,10 @@ public class ApplicationException extends RuntimeException {
         super(errorMessage);
         this.errorCode = errorCode;
     }
+
+    public static class MaturityPeriodNotFoundException extends ApplicationException {
+        public MaturityPeriodNotFoundException() {
+            super(ErrorDetail.MATURITY_PERIOD_NOT_FOUND);
+        }
+    }
 }
