@@ -16,6 +16,7 @@ This project provides 2 rest apis which cater the need of assignment
    rounding mode HALF_EVEN
 3. Monthly cost is rounded to 2 decimal place with rounding mode HALF_UP
 4. lastUpdate for interest rate will be returned in UTC in ISO date-time format such as '2025-03-15T13:38:13.62512Z'
+5. In memory h2 db is used to store interest rates and populated at application startup using 'data.sql'
 
 ## Prerequisite
 1. maven 3
