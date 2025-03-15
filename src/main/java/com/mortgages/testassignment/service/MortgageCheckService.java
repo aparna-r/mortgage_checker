@@ -52,10 +52,10 @@ public class MortgageCheckService {
     /**
      *
      * @param income annual income
-     * @param maturityPeriodInYears
-     * @param loanValue
-     * @param homeValue
-     * @return
+     * @param maturityPeriodInYears maturity period in years
+     * @param loanValue loan amount
+     * @param homeValue home value
+     * @return monthly cost
      */
     public Optional<Double> getMonthlyCost(double income, int maturityPeriodInYears, double loanValue,
                                            double homeValue) {
