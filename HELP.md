@@ -17,6 +17,8 @@ This project provides 2 rest apis which cater the need of assignment
 3. Monthly cost is rounded to 2 decimal place with rounding mode HALF_UP
 4. lastUpdate for interest rate will be returned in UTC in ISO date-time format such as '2025-03-15T13:38:13.62512Z'
 5. In memory h2 db is used to store interest rates and populated at application startup using 'data.sql'
+6. In the future, an update mechanism to change db entries can be implemented by apis. lastUpdate in MortgageInterestRate 
+   entity supports auto updation on create/update.  
 
 ## Prerequisite
 1. maven 3
