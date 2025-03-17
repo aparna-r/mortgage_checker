@@ -19,6 +19,8 @@ This project provides 2 rest apis which cater the need of assignment
 5. In memory h2 db is used to store interest rates and populated at application startup using 'data.sql'
 6. In the future, an update mechanism to change db entries can be implemented by apis. lastUpdate in MortgageInterestRate 
    entity supports auto updation on create/update.  
+7. For security, static analysis tools like checkmarx can be used for vulnerability check. A pen test is recommended before
+   going live.
 
 ## Prerequisite
 1. maven 3
