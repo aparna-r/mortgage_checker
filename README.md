@@ -21,6 +21,7 @@ This project provides 2 rest apis which cater the need of assignment
    entity supports auto updation on create/update.  
 7. For security, static analysis tools like checkmarx can be used for vulnerability check. A pen test is recommended before
    going live.
+8. It is recommended to configure public certificate and private key to run over https for production environment.
 
 ## Prerequisite
 1. maven 3
