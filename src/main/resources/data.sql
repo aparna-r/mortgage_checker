@@ -1,0 +1,12 @@
+INSERT INTO mortgage_interest_rate (maturity_period_in_years, annual_interest_rate_percentage, last_update) VALUES (1, 4.25, NOW());
+INSERT INTO mortgage_interest_rate (maturity_period_in_years, annual_interest_rate_percentage, last_update) VALUES (2, 4.09, NOW());
+INSERT INTO mortgage_interest_rate (maturity_period_in_years, annual_interest_rate_percentage, last_update) VALUES (3, 3.78, NOW());
+INSERT INTO mortgage_interest_rate (maturity_period_in_years, annual_interest_rate_percentage, last_update) VALUES (5, 3.78, NOW());
+INSERT INTO mortgage_interest_rate (maturity_period_in_years, annual_interest_rate_percentage, last_update) VALUES (6, 3.95, NOW());
+INSERT INTO mortgage_interest_rate (maturity_period_in_years, annual_interest_rate_percentage, last_update) VALUES (7, 4.02, NOW());
+INSERT INTO mortgage_interest_rate (maturity_period_in_years, annual_interest_rate_percentage, last_update) VALUES (10, 4.07, NOW());
+INSERT INTO mortgage_interest_rate (maturity_period_in_years, annual_interest_rate_percentage, last_update) VALUES (12, 4.32, NOW());
+INSERT INTO mortgage_interest_rate (maturity_period_in_years, annual_interest_rate_percentage, last_update) VALUES (15, 4.40, NOW());
+INSERT INTO mortgage_interest_rate (maturity_period_in_years, annual_interest_rate_percentage, last_update) VALUES (17, 4.40, NOW());
+INSERT INTO mortgage_interest_rate (maturity_period_in_years, annual_interest_rate_percentage, last_update) VALUES (20, 4.51, NOW());
+INSERT INTO mortgage_interest_rate (maturity_period_in_years, annual_interest_rate_percentage, last_update) VALUES (30, 4.71, NOW());
